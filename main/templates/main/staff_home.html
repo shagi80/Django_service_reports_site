@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load my_tags %}
+
+{% block title %}
+    {{ block.super }}|Главная
+{% endblock %}
+
+{% block content %}
+{% include 'inc/staff_navbar.html' %}
+
+<div class="container pt-4">
+    <div class="row justify-content-between">
+        <div class="col-lg-7">
+            <h4>Новые отчеты:</h4>
+            {% if reports %}
+                {% for report in reports %}
+                <div class="row mb-2">
+                    <div class="card text-dark bg-light" >
+                        <div class="card-body ">
+
+                            <!-- строка заголовка --> 
+                            <div class="row py-1 border border-secondary">
+                                <h5 class="col">
+                                    {{ report.service_center }} ({{ report.service_center.city }}) за {{ report.report_date|date:"F Y"|lower}}
+                                </h5> 
+                                <div class="col-auto">
+                                    <a href="{% url 'report_page' report.pk %}?previos={{ request.get_full_path }}" class="btn btn-outline-primary btn-sm">
+                                        <i class="bi bi-eye"></i></i>
+                                    </a>                                
+                                </div>
+                            </div>
+                    
+                            <!--Статус и кнопки-->
+                            <div class="row g-1 justify-content-between py-2">
+                                {% if report.status == 'send' %}                                    
+                                    <h5 class="col-sm-6 text-warning">{{ report.get_status_display }}</h5>
+                                    <button type="button" class="col-auto d-flex btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#statusModal_{{ report.pk }}">
+                                        Начать проверку
+                                    </button>
+
+                                    <!-- окно подтверждения изменения статуса отчета -->
+                                    <div class="modal fade" id="statusModal_{{ report.pk }}" tabindex="-1" aria-labelledby="statusModalLabel_{{ report.pk }}" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="statusModalLabel_{{ report.pk }}">Изменить статус отчета ?</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body text-start">
+                                                    {{ report.service_center }} за {{ report.report_date|date:"F Y"|lower}}
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <form method="POST" action="{% url 'report-change-status' %}">
+                                                        {% csrf_token %}
+                                                        <button type="submit" class="btn btn-primary btn-sm" name="{{ report.status }}" value="{{ report.pk }}">Выполнить</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                {% endif %}
+                            </div>
+
+                            <!--Итоги-->
+                            <div class="row pb-2">
+                                <div class="col-auto">
+                                    <h6>Ремонты: {{ report.records_count }}</h6>
+                                    <h6>Итого: {{ report.total_cost }} руб</h6>
+                                </div>
+                                <div class="col-sm row">
+                                    <div class="col-auto">
+                                    За работы: {{ report.total_work }} руб<br>
+                                    За детали: {{ report.total_part }} руб<br>
+                                    </div>
+                                    <div class="col-auto">
+                                        За выезд: {{ report.total_move }} руб
+                                    </div>                
+                                </div>
+                                <div class="col-auto mt-2 mt-sm-0">
+                                    {% if report.reportdocumnent_set.all %}
+                                        {% for doc in report.reportdocumnent_set.all %}
+                                            <div class="row col-auto"><a href='{{ doc.file.url }}' class='text-decoration-none' target="_blank">{{ doc.get_title_display }} №{{ doc.number }} от {{ doc.date|date:'d.m.y' }}</a></div>                        
+                                        {% endfor %}
+                                    {% else %}               
+                                        <span class="text-danger"><i class="bi bi-envelope"></i> нет платежных документов</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <!--Примечание-->
+                            {% if report.note %}
+                            <div class="col-12">
+                                <i class="bi bi-info-square"></i><label class="px-3">{{ report.note }}</label>
+                            </div>
+                            {% endif %}
+
+                            <!--Флаг записей с ошибками-->
+                            {% if report.have_fault %}
+                            <div class="col-12">
+                                <i class="bi bi-exclamation-square-fill text-warning"></i><strong class="px-3">есть записи с ошибками !</strong>
+                            </div>
+                            {% endif %} 
+
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="row mt-5 text-center">
+                    <h4 class="text-muted">Новых отчетов нет ...</h4>
+                </div>
+                <div class="row mt-5 justify-content-center">
+                    <div class="col-4 text-center">
+                        <a class="btn btn-secondary mb-5" href="{% url 'reports_list' %}" role="button" aria-disabled="true">
+                            <i class="bi bi-card-list"></i>   Все отчеты
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-lg-5 border">
+            <div class="row py-3 justify-content-between">
+                <div class="col"><h4>Последние изменения данных</h4> </div>
+                <div class="col-auto">
+                    <a class="btn btn-secondary" href="{% url 'logs_page' %}" role="button" aria-disabled="true"><i class="bi bi-card-list"></i></a>
+                </div>
+            </div>
+            {% for action in staff_actions %}
+            {% show_log action %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% include 'inc/footer.html' %}
+{% endblock %}

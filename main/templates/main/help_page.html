@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load my_tags %}
+
+
+{% block title %}
+    {{ block.super }}|Главная
+{% endblock %}
+
+{% block content %}
+<div id="TopLevel"></div>
+{% if request.user.is_authenticated %}
+    {% if request.user.is_staff %}
+        {% include 'inc/staff_navbar.html' %}
+    {% else %}
+        {% include 'inc/user_navbar.html' %}
+    {% endif %}
+{% else %}
+    <nav class="navbar sticky-top navbar-expand-md navbar-light bg-light" aria-label="Fourth navbar example">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="\"><strong>RENOVA</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+{% endif %}
+
+<main class="container col-10 py-4 d-flex flex-column align-items-center">
+    <div class="d-flex flex-wrap justify-content-center">
+        <div class="p-4">
+            <h3 class="col-12 align-items-center">Основной функционал с сайта</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/b36prDfsOHw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div class="p-4">
+            <h3 class="col-12 align-items-center">Добавление отчета</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/-_ghBxhsI-8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div class="p-4">
+            <h3 class="col-12 align-items-center">Проверка записи о ремонте</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/9U2ZZbzRx90" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div class="p-4">
+            <h3 class="col-12 align-items-center">Возврат отчета на доработку</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Rtck_wNbqek" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div class="p-4">
+            <h3 class="col-12 align-items-center">Запчасти без обязательств. Часть 1</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/D4GRjQxXt9M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div class="p-4">
+            <h3 class="col-12 align-items-center">Запчасти без обязательств. Часть 2</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/VkfF_VKpwJQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div class="p-4">
+            <h3 class="col-12 align-items-center">Перенос ремонта на следующий месяц.</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/E-bvKuZeS9o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div class="p-4">
+            <h3 class="col-12 align-items-center">Загрузка платежных документов.</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/YWLFIXK6OrI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </div>
+    
+    <!-- кнопка ВВЕРХ -->
+    {% include 'inc/go_to_top_button.html' %}
+</main>
+
+{% include 'inc/footer.html' %}
+{% endblock %}

@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load my_tags %}
+
+
+{% block title %}
+    {{ block.super }}|Главная
+{% endblock %}
+
+{% block content %}
+{% include 'inc/user_navbar.html' %}
+
+<main class="container py-4">
+    <div class="row g-3">
+        <div class="col-lg-3 order-lg-last">
+            <div class="card">
+                <h5 class="card-header">Ваш менеджер:</h5>
+                <div class="card-body">
+                    <p class="card-text mb-0"><strong>ФИО: </strong> Тугуз Адам Азметович</p>
+                    <p class="card-text mb-0"><strong>E-mail: </strong> {{ senter.staff_user.email }}</p>
+                    <p class="card-text"><strong>Телефон: </strong> 8(988)509-03-40</p>
+                </div>
+            </div>
+
+            <div class="card mt-1">
+                <h5 class="card-header">Ваши контакты:</h5>
+                <div class="card-body">
+                    <p class="card-text mb-0"><strong>Почтовый адрес: </strong> {{ senter.post_addr }}</p>
+                    <p class="card-text"><strong>E-mail: </strong> {{ senter.user.email }}</p>
+                    <figure class="text-center">
+                        <small>Если вы нашли ошибку в своих контактных данных пожалуйста сообщите нам.</small>
+                    </figure>
+                </div>
+            </div>
+
+            {% if parts %}
+            <div class="card mt-1">
+                <h5 class="card-header">Ваши заказы:</h5>
+                <div class="card-body">
+                    <ul>
+                    {% for part in parts %}
+                    <li class="card-text"> {{ part.title }} - {{ part.count }} шт</li>
+                    {% endfor %}
+                    </ul>
+                    <div class="text-center">
+                        <a class="btn btn-outline-secondary" href="{% url 'ordered-parts' %}" role="button">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+
+        <div class="col-lg-9">
+            <div class="row mb-3 justify-content-between">
+                <h4 class="col-auto">Ваши отчеты:</h4>
+                <div class="col-auto">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newReport">
+                        Добавить отчет
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="newReport" tabindex="-1" aria-labelledby="newReportLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="newReportLabel">Добавление отчета</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form method="POST" action="{% url 'report-add' %}">
+                                    {% csrf_token %}
+                                    <div class="modal-body">
+                                        <div class="row g-2 text-start">
+                                            <div class="col-xl-4">Отчетный период:</div>
+                                            <div class="col-md-5">{{ rep_form.month }}</div>
+                                            <div class="col-md-3">{{ rep_form.year }}</div>
+                                            <div class="col-xl-4">Примечание:</div>
+                                            <div class="col-md-8">{{ rep_form.note }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary btn-sm">Добавить</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Вывод отчетов -->
+            <div class="row mx-3">
+                {% if reports %}
+                    {% for report in page_obj %}
+                    <div class="row mb-2">
+                        <div class="card text-dark bg-light" >
+                            <div class="card-body ">
+
+                                <!-- Заголовок -->
+                                <div class="row justify-content-between mb-3">
+                                    <div class="col-auto">
+                                        <h5>{{ report.report_date|date:"F Y" }}</h5>
+                                    </div>
+                                    <div class="col-auto">
+                                        {% if report.status == 'draft' %}
+                                        <h5 class="text-muted">{{ report.get_status_display }}</h5>
+                                        {% elif report.status == 'refinement' %}
+                                        <h5 class="text-danger">{{ report.get_status_display }}</h5>
+                                        {% elif report.status == 'send' or report.status == 'received' %}
+                                        <h5 class="text-warning">{{ report.get_status_display }}</h5>
+                                        {% elif report.status == 'verified' or report.status == 'accepted' %}
+                                        <h5 class="text-info">{{ report.get_status_display }}</h5>
+                                        {% else %}
+                                        <h5 class="text-success">{{ report.get_status_display }}</h5>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-12 col-lg-auto text-end">
+                                        <a href="{% url 'report_page' report.pk %}" class="btn btn-outline-secondary btn-sm">
+                                            <i class="bi bi-eye"></i><span class="m-1">Открыть</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!--Итоги-->
+                                <div class="row pb-2">
+                                    <div class="col-auto">
+                                        <h6>Ремонты: {{ report.records_count }}</h6>
+                                        <h6>Итого: {{ report.total_cost }} руб</h6>
+                                    </div>
+                                    <div class="col-sm row">
+                                        <div class="col-auto">
+                                        За работы: {{ report.total_work }} руб<br>
+                                        За детали: {{ report.total_part }} руб<br>
+                                        </div>
+                                        <div class="col-auto">
+                                            За выезд: {{ report.total_move }} руб
+                                        </div>                
+                                    </div>
+                                    <div class="col-auto mt-2 mt-sm-0">
+                                        {% if report.reportdocumnent_set.all %}
+                                            {% for doc in report.reportdocumnent_set.all %}
+                                                <div class="row col-auto"><a href='{{ doc.file.url }}' class='text-decoration-none' target="_blank">{{ doc.get_title_display }} №{{ doc.number }} от {{ doc.date|date:'d.m.y' }}</a></div>                        
+                                            {% endfor %}
+                                        {% else %}               
+                                            <span class="text-danger"><i class="bi bi-envelope"></i> нет платежных документов</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <!--Примечание-->
+                                {% if report.note %}
+                                <div class="col-12">
+                                    <i class="bi bi-info-square"></i><label class="px-3">{{ report.note }}</label>
+                                </div>
+                                {% endif %}
+
+                                <!--Флаг записей с ошибками-->
+                                {% if report.have_fault %}
+                                <div class="col-12">
+                                    <i class="bi bi-exclamation-square-fill text-warning"></i><strong class="px-3">есть записи с ошибками !</strong>
+                                </div>
+                                {% endif %} 
+
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else%}
+                    <label class="col-sm-12 text-center"><h5 class="text-muted">Отчетов нет ..</h5></label>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    {% include 'inc/list_paginator.html' %}
+</main>
+
+{% include 'inc/footer.html' %}
+
+
+<script>
+    if (!document.createElement('dialog').showModal) {
+        // Браузер нативно не поддерживает элемент dialog
+        text = 'Ваш браузер не поддерживает модальные окна !\nСообщите об этои администратору сайта !'
+        alert(text)
+      
+        import('/dist/dialog-polyfill.js') // Подгружаем polyfill
+          .then(dialogPolyfill =>
+            document.querySelectorAll('modal fade')
+              .forEach(dialogPolyfill.registerDialog) // Применяем его для всех элементов на странице
+            
+          )
+      }
+</script>
+
+{% endblock %}

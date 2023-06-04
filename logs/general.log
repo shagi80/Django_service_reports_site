@@ -1,0 +1,363 @@
+2023-04-30 17:41:52,660 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 17:42:13,923 WARNING log Not Found: /staff_home/dsasfdsf
+2023-04-30 17:43:00,183 INFO autoreload C:\Users\User\PycharmProjects\reportssite\reportssite\settings.py changed, reloading.
+2023-04-30 17:43:00,832 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 17:43:04,400 WARNING log Not Found: /staff_home/dsasfdsf
+2023-04-30 17:43:12,812 WARNING log Not Found: /staff_home1/
+2023-04-30 17:46:43,826 WARNING log Not Found: /staff_home1/
+2023-04-30 17:48:01,269 WARNING log Not Found: /reports/report/21220
+2023-04-30 17:49:44,149 WARNING log Forbidden (Permission denied): /products/code_and_prices-list/294
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\base.py", line 84, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\auth\mixins.py", line 134, in dispatch
+    return self.handle_no_permission()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\auth\mixins.py", line 48, in handle_no_permission
+    raise PermissionDenied(self.get_permission_denied_message())
+django.core.exceptions.PermissionDenied
+2023-04-30 17:49:52,699 WARNING log Forbidden (Permission denied): /products/code_and_prices-list/294
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\base.py", line 84, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\auth\mixins.py", line 134, in dispatch
+    return self.handle_no_permission()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\auth\mixins.py", line 48, in handle_no_permission
+    raise PermissionDenied(self.get_permission_denied_message())
+django.core.exceptions.PermissionDenied
+2023-04-30 17:49:54,248 WARNING log Forbidden (Permission denied): /products/code_and_prices-list/294
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\base.py", line 84, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\auth\mixins.py", line 134, in dispatch
+    return self.handle_no_permission()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\auth\mixins.py", line 48, in handle_no_permission
+    raise PermissionDenied(self.get_permission_denied_message())
+django.core.exceptions.PermissionDenied
+2023-04-30 17:49:55,397 WARNING log Forbidden (Permission denied): /products/code_and_prices-list/294
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\base.py", line 84, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\auth\mixins.py", line 134, in dispatch
+    return self.handle_no_permission()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\auth\mixins.py", line 48, in handle_no_permission
+    raise PermissionDenied(self.get_permission_denied_message())
+django.core.exceptions.PermissionDenied
+2023-04-30 17:50:00,951 WARNING log Forbidden (Permission denied): /products/code_and_prices-list/294
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\base.py", line 84, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\auth\mixins.py", line 134, in dispatch
+    return self.handle_no_permission()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\auth\mixins.py", line 48, in handle_no_permission
+    raise PermissionDenied(self.get_permission_denied_message())
+django.core.exceptions.PermissionDenied
+2023-04-30 18:07:56,019 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:07:57,298 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:23:40,405 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:23:41,090 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:23:42,902 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:23:44,126 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:23:46,116 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:23:46,821 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:23:50,277 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:23:50,907 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:23:53,189 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:23:54,048 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:23:57,765 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:23:58,390 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:24:03,030 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:24:03,846 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:24:15,776 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:24:17,207 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:24:19,191 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:24:20,872 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:24:24,672 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:24:26,439 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:24:33,739 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:24:34,519 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:24:36,753 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:24:38,100 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:25:49,806 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:25:50,495 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:26:04,523 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:26:05,193 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:26:06,551 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:26:07,295 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:26:22,428 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:26:23,033 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:26:26,602 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:26:27,270 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:26:31,820 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:26:32,395 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:27:13,903 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:27:14,498 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:27:16,920 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:27:17,543 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:27:22,079 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:27:22,773 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:27:25,185 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:27:25,836 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:27:28,282 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:27:28,942 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:27:32,446 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:27:33,094 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:27:34,448 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:27:35,050 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:27:41,673 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:27:42,306 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:27:49,993 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:27:50,600 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:27:53,012 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:27:53,590 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:28:00,219 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:28:00,820 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:28:07,409 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:28:08,048 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:28:09,421 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:28:10,001 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:28:14,511 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:28:15,178 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:28:17,578 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:28:18,341 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:28:25,000 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:28:25,646 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:28:28,108 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:28:28,748 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:28:33,134 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:28:33,822 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:28:35,276 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:28:36,646 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:28:40,234 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:28:41,172 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:28:42,512 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:28:43,133 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:28:45,551 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:28:46,260 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:28:47,728 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:28:49,006 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:28:50,394 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:28:51,041 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:28:52,404 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:28:53,228 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:28:55,608 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:28:56,210 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:28:59,684 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:29:00,361 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:29:01,724 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:29:02,338 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:29:07,982 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:29:08,598 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:29:18,491 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:29:19,195 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:29:22,708 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:29:23,312 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:29:25,714 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:29:26,448 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:34:07,393 WARNING log Forbidden (Permission denied): /products/code_and_prices-list/295
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\base.py", line 84, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\auth\mixins.py", line 134, in dispatch
+    return self.handle_no_permission()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\auth\mixins.py", line 48, in handle_no_permission
+    raise PermissionDenied(self.get_permission_denied_message())
+django.core.exceptions.PermissionDenied
+2023-04-30 18:34:14,481 WARNING log Not Found: /products/code_and_prices-list/296
+2023-04-30 18:34:30,333 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:34:31,197 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:34:49,497 INFO autoreload C:\Users\User\PycharmProjects\reportssite\products\views.py changed, reloading.
+2023-04-30 18:34:50,225 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:56:17,141 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:56:17,862 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:56:42,671 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:56:43,416 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:56:52,691 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:56:53,311 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:57:04,640 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:57:05,334 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:57:07,227 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:57:07,866 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:57:10,747 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:57:11,459 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:57:15,955 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:57:17,422 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:57:22,849 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:57:24,225 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:57:26,506 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:57:27,358 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:57:38,625 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:57:39,272 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:57:55,943 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:57:56,595 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:58:16,060 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:58:16,674 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:58:27,631 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:58:28,255 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:58:30,749 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:58:31,437 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:58:36,521 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:58:37,237 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:58:41,239 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:58:42,474 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:58:57,607 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:58:58,230 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:59:01,814 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:59:02,437 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:59:03,881 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:59:04,523 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:59:05,906 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:59:06,524 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:59:07,915 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:59:08,583 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:59:12,136 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:59:12,746 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:59:15,185 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:59:15,878 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:59:17,454 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:59:18,734 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:59:20,520 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:59:22,072 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:59:25,273 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:59:26,039 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:59:46,437 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:59:47,225 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:59:49,139 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:59:49,934 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:59:52,489 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:59:53,224 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:59:55,397 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 18:59:56,935 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 18:59:59,137 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:00:00,156 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:00:14,003 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:00:14,675 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:00:22,887 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:00:23,613 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:00:27,086 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:00:27,839 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:00:31,963 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:00:33,472 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:00:37,308 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:00:38,117 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:00:39,550 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:00:40,494 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:00:42,422 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:00:43,091 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:01:05,648 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:01:06,320 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:01:09,901 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:01:10,587 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:01:16,119 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:01:16,860 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:01:20,389 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:01:21,114 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:01:22,592 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:01:23,263 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:01:24,695 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:01:25,631 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:01:29,157 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:01:29,998 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:01:33,596 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:01:35,203 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:01:41,943 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:01:42,600 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:02:05,084 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:02:05,749 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:02:10,762 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:02:11,422 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:02:14,013 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:02:14,719 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:02:16,621 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:02:17,392 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:02:32,747 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:02:33,505 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:02:58,152 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:02:58,867 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:03:00,899 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:03:01,724 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:03:07,962 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:03:09,109 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:03:14,562 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:03:15,296 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:03:20,871 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:03:21,570 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:03:25,515 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:03:26,247 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:03:40,215 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:03:40,891 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:03:45,271 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:03:45,971 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:03:53,565 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:03:54,191 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:04:03,974 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:04:04,692 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:04:38,193 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:04:38,831 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:04:41,272 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:04:42,004 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:04:46,463 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:04:47,141 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:04:49,510 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:04:50,144 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:04:52,688 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:04:53,659 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:04:56,148 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:04:57,515 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:04:59,334 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:05:00,067 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:05:03,841 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:05:04,492 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:08:30,743 WARNING log Not Found: /media/report_document/125/69a3d67ce6e14ee28f102b24e06afcfa.pdf
+2023-04-30 19:08:48,294 WARNING log Not Found: /media/report_document/220/3921671b4eeb41729995250225be1da2.pdf
+2023-04-30 19:11:34,367 INFO autoreload C:\Users\User\PycharmProjects\reportssite\reportssite\urls.py changed, reloading.
+2023-04-30 19:11:35,222 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:12:06,093 INFO autoreload C:\Users\User\PycharmProjects\reportssite\upload\views.py changed, reloading.
+2023-04-30 19:12:06,744 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:15:18,779 WARNING log Not Found: /media/report_document/220/b608e9d21ba34768b4d93bbd2d9096ff.pdf
+2023-04-30 19:15:30,726 WARNING log Not Found: /media/report_document/220/b608e9d21ba34768b4d93bbd2d9096ff.pdf
+2023-04-30 19:15:33,724 WARNING log Not Found: /media/report_document/220/b608e9d21ba34768b4d93bbd2d9096ff.pdf
+2023-04-30 19:15:34,295 WARNING log Not Found: /media/report_document/220/b608e9d21ba34768b4d93bbd2d9096ff.pdf
+2023-04-30 19:15:45,801 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:15:51,534 WARNING log Not Found: /media/report_document/220/b608e9d21ba34768b4d93bbd2d9096ff.pdf
+2023-04-30 19:16:17,796 INFO autoreload C:\Users\User\PycharmProjects\reportssite\reportssite\urls.py changed, reloading.
+2023-04-30 19:16:18,425 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:16:20,166 INFO autoreload C:\Users\User\PycharmProjects\reportssite\reportssite\urls.py changed, reloading.
+2023-04-30 19:16:20,812 INFO autoreload Watching for file changes with StatReloader
+2023-04-30 19:16:30,396 WARNING log Not Found: /media/report_document/220/b608e9d21ba34768b4d93bbd2d9096ff.pdf
+2023-04-30 19:16:48,511 INFO autoreload C:\Users\User\PycharmProjects\reportssite\reportssite\settings.py changed, reloading.

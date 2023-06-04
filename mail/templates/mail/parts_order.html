@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RENOVA.Parts order</title>
+</head>
+<body>
+    <div style="margin-left: auto; margin-right: auto; width: 80%">
+        <h3 style="color: blue;">Новый заказ на запчасти от {{ record.report.service_center }} ({{ record.report.service_center.city }})</h3>
+        {% if report.service_center.user.email %}
+            Почта:  <a href="mailto:{{ report.service_center.user.email }}">{{ report.service_center.user.email }}</a>
+        {% endif %}
+        {% if report.service_center.servicecontacts_set.all.first %}
+        <div>
+            Контакт:  
+            <a href="tel:{{ contact.tel_num }}">{{ report.service_center.servicecontacts_set.all.first.tel_num }}</a>
+            ({{ report.service_center.servicecontacts_set.all.first.name }})
+        </div>
+        {% endif %}
+        <hr>
+
+        <div>
+            <p style="margin-bottom: 0px;">
+                <strong>{{ record.product }} {{ record.model_description }} SN:{{ record.serial_number }}</strong>
+            </p>
+            <p>
+                <strong>Клиент:  </strong>
+                {% if record.client %}
+                    {{ record.client }} ({{ record.client_phone }})
+                {% else %}
+                    предторговый ремонт
+                {% endif %}
+            </p>
+            <p><strong>Неисправность:  </strong>{{ record.problem_description }}</p>
+            <p><strong>Код:  </strong>{{ record.code }}</p>
+            <p>
+                {% if record.buy_date %}
+                    <strong>Дата продажи:  </strong>{{ record.buy_date }}<br>
+                {% endif %}
+                <strong>Дата начала ремонта:  </strong>{{ record.start_date }}
+            </p>
+            <p style="margin: 0px;"><strong>Заказанные детали: </strong></p>
+            <ul style="margin: 0px;">
+                {% for part in parts %}
+                    <li style="margin: 0px; color: red;">
+                        {{ part.title }} - {{ part.count }} шт
+                    </li>                                                               
+                {% endfor %}
+            </ul>
+            <p>
+                <strong> Почтовый адрес: </strong>
+                <span style="color: red;">{{ record.report.service_center.post_addr }}</span>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

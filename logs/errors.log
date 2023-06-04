@@ -1,0 +1,1 @@
+2023-04-30 18:34:33,467 ERROR "GET /products/code_and_prices-list/296 HTTP/1.1" 500 59 C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\servers\basehttp.py None
