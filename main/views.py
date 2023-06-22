@@ -69,12 +69,13 @@ def user_home(request):
 #домашяя страница персоланала
 @user_passes_test(staff_validation)
 def staff_home(request):
-    from .business_logic import STATUS_SEND
+    from .business_logic import STATUS_SEND, STATUS_SEND_AGAIN
     cont = dict()
     logs = ChangeLogs.objects.all()[:3]
-    reports = Reports.objects.filter(status=STATUS_SEND)
+    reports = Reports.objects.filter(status__in=[STATUS_SEND, STATUS_SEND_AGAIN])
     if not request.user.groups.filter(name='GeneralStaff').exists() and not request.user.is_superuser:
         reports = reports.filter(service_center__staff_user=request.user)
+    reports = reports.order_by('-send_date')
     cont['staff_actions'] = logs
     cont['reports'] = reports
     return render(request, 'main/staff_home.html', cont)

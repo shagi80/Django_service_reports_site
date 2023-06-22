@@ -23,11 +23,19 @@
                     <span class="badge bg-primary rounded-pill">{{ obj_count }}</span>
                 </h4>
                 <form class="card p-2" method="get">
-                    <div class="row mb-3  align-items-center">
+                    <div class="row mb-1  align-items-center">
                         <label class="col-xl-4 col-form-label">Сервис</label>
                         <div class="col-xl-8">
                             {{ form.service_center }}
                         </div>
+                    </div>
+                    <div class="row mb-1  align-items-center">
+                        <label class="col-xl-4">Статус</label>
+                        <div class="col-xl-8">
+                            {{ form.status }}
+                        </div>
+                    </div>
+                    <div class="row mb-1 align-items-center">
                         <label class="col-xl-4 col-form-label">Отч. период</label>
                         <div class="col-xl-1">
                             {{ form.use_date }}
@@ -39,24 +47,15 @@
                             {{ form.year }}
                         </div>
                     </div>
-                    <div class="row mb-3  align-items-center">
-                        <label class="col-xl-4">Статус</label>
-                        <div class="col-xl-1">
-                            {{ form.use_status }}
-                        </div>
-                        <div class="col-xl-7">
-                            {{ form.status }}
-                        </div>
-                    </div>
                     {% if request.user.is_superuser or request.user|has_group:"GeneralStaff" %}
-                    <div class="row mb-3  align-items-center">
+                    <div class="row mb-1  align-items-center">
                         <label class="col-xl-4">Менеджер</label>
                         <div class="col-xl-8">
                             {{ form.staff_user }}
                         </div>
                     </div>
                     {% endif %}
-                    <div class="container d-flex justify-content-center gap-2">
+                    <div class="container d-flex justify-content-center gap-2 mt-3">
                         <button type="submit" class="btn btn-outline-primary">
                             <i class="bi bi-search"></i>
                             выбрать
@@ -93,8 +92,13 @@
                                 <h5 class="text-muted">{{ report.get_status_display }}</h5>
                                 {% elif report.status == 'refinement' %}
                                 <h5 class="text-danger">{{ report.get_status_display }}</h5>
-                                {% elif report.status == 'send' %}
-                                <h5 class="text-warning">{{ report.get_status_display }}</h5>
+                                {% elif report.status == 'send' or report.status == 'send_again' %}
+                                <h5 class="text-warning">
+                                    {{ report.get_status_display }}
+                                    {% if report.send_date %}
+                                        {{ report.send_date|date:" d.m.y" }}
+                                    {% endif %}
+                                </h5>
                                 {% elif report.status == 'received' %}
                                 <h5 class="text-warning">
                                     {{ report.get_status_display }}
@@ -112,7 +116,7 @@
                                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#statusModal_{{ report.pk }}">
                                     {% if report.status == 'draft' %}
                                     На проверку
-                                    {% elif report.status == 'send' %}
+                                    {% elif report.status == 'send' or report.status == 'send_again' %}
                                     Начать проверку
                                     {% elif report.status == 'verified' %}
                                     Принять отчет

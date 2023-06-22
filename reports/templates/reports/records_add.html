@@ -433,74 +433,75 @@
     </form>
 
     {% if record %}
-    <hr class="mt-5">
-    <div class='row mt-5'>
-        <h6 class="col-auto">Документы:</h6>                            
-        <div class="col-auto">
-            {% if record.recorddocumnent_set.all %}
-                {% for doc in record.recorddocumnent_set.all %}
-                    <div class="row">
-                        <div class="col-auto"><a href='{{ doc.file.url }}' class='text-decoration-none' target="_blank">{{ doc.get_title_display }} №{{ doc.number }} от {{ doc.date|date:'d.m.y' }}</a></div>                        
-                        {% if record.report.status != 'payment' %}
-                            <form class="col text-end" method="POST" action="{% url 'record-document-delete' record.pk %}">                                         
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-link text-danger p-0" style="font-size:0.8rem" name="document" value="{{ doc.pk }}">
-                                    <i class="bi bi-x-circle"></i>
-                                </button>
-                            </form>
-                        {% endif %}
-                    </div>
-                {% endfor %}
-            {% else %}               
-                <span class="text-danger"><i class="bi bi-envelope"></i> нет документов</span>
-            {% endif %}
-        </div>                
-        <div class="col">
-            {% if record.report.status != 'payment' %}
-                <button type="button" class="btn btn-outline-secondary btn-sm mb-1" data-bs-toggle="modal" data-bs-target="#addDocument_{{ form.instance.pk }}">
-                    Добавить документ
-                </button>
-            {% endif %}
-            <!-- Окно загрузки документа -->
-            <div class="modal fade" id="addDocument_{{ record.pk }}" tabindex="-1" aria-labelledby="addDocumentLabel_{{ record.pk }}" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="addDocumentLabel_{{ record.pk }}">Добавление документа</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <form id="document_form" method="POST" action="{% url 'record-document-upload' record.pk %}" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            {{ document_form.record }}
-                            <div class="modal-body">
-                                <div class="row g-2 text-start">
-                                    <div class="col-md-4">Документ:</div>
-                                    <div class="col-md-8">{{ document_form.title }}</div>
-                                    <div class="col-md-4">Номер:</div>
-                                    <div class="col-md-2">{{ document_form.number }}</div>
-                                    <div class="col-md-2 text-end">Дата:</div>
-                                    <div class="col-md-4">{{ document_form.date }}</div>
-                                    <div class="col-md-2">Файл:</div>
-                                    <div class="col-md-10">{{ document_form.file }}</div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <div id='buttons'>
-                                    <button type="submit" class="btn btn-primary btn-sm">Добавить</button>
-                                </div>
-                                <div id='buttons_disabled' style="display:none">
-                                    <button class="btn btn-primary btn-sm" disabled>
-                                        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                                        Добавить
+        <hr class="mt-5">
+        <div class='row mt-5'>
+            <h6 class="col-auto">Документы:</h6>                            
+            <div class="col-auto">
+                {% if record.recorddocumnent_set.all %}
+                    {% for doc in record.recorddocumnent_set.all %}
+                        <div class="row">
+                            <div class="col-auto"><a href='{{ doc.file.url }}' class='text-decoration-none' target="_blank">{{ doc.title }} №{{ doc.number }} от {{ doc.date|date:'d.m.y' }}</a></div>                        
+                            <!--Кнопка удаления документво-->
+                            {% if record.report.status != 'payment' and  record.report.status != 'accepted' and request.user == record.report.service_center.user %}
+                                <form class="col text-end" method="POST" action="{% url 'record-document-delete' record.pk %}">                                         
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-link text-danger p-0" style="font-size:0.8rem" name="document" value="{{ doc.pk }}">
+                                        <i class="bi bi-x-circle"></i>
                                     </button>
-                                </div>
+                                </form>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                {% else %}               
+                    <span class="text-danger"><i class="bi bi-envelope"></i> нет документов</span>
+                {% endif %}
+            </div>                
+            <div class="col">
+                {% if record.report.status != 'payment' and  record.report.status != 'accepted' and request.user == record.report.service_center.user %}
+                    <button type="button" class="btn btn-outline-secondary btn-sm mb-1" data-bs-toggle="modal" data-bs-target="#addDocument_{{ form.instance.pk }}">
+                        Добавить документ
+                    </button>
+                {% endif %}
+                <!-- Окно загрузки документа -->
+                <div class="modal fade" id="addDocument_{{ record.pk }}" tabindex="-1" aria-labelledby="addDocumentLabel_{{ record.pk }}" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addDocumentLabel_{{ record.pk }}">Добавление документа</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                        </form>
+                            <form id="document_form" method="POST" action="{% url 'record-document-upload' record.pk %}" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ document_form.record }}
+                                <div class="modal-body">
+                                    <div class="row g-2 text-start">
+                                        <div class="col-md-4">Документ:</div>
+                                        <div class="col-md-8">{{ document_form.title }}</div>
+                                        <div class="col-md-4">Номер:</div>
+                                        <div class="col-md-2">{{ document_form.number }}</div>
+                                        <div class="col-md-2 text-end">Дата:</div>
+                                        <div class="col-md-4">{{ document_form.date }}</div>
+                                        <div class="col-md-2">Файл:</div>
+                                        <div class="col-md-10">{{ document_form.file }}</div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <div id='buttons'>
+                                        <button type="submit" class="btn btn-primary btn-sm">Добавить</button>
+                                    </div>
+                                    <div id='buttons_disabled' style="display:none">
+                                        <button class="btn btn-primary btn-sm" disabled>
+                                            <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                                            Добавить
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     {% endif %}
     
 </div>

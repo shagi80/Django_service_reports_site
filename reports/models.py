@@ -19,9 +19,6 @@ class Reports(ChangeloggableMixin, models.Model):
     service_center = models.ForeignKey(ServiceCenters, on_delete=models.CASCADE, verbose_name='Сервисный центр')
     report_date = models.DateField(verbose_name='Отчетный период')
     note = models.TextField(blank=True, null=True, verbose_name='Примечание')
-    invoice = models.CharField(max_length=250, blank=True, null=True, verbose_name='Реквизиты счета')
-    act = models.CharField(max_length=250, blank=True, null=True, verbose_name='Реквизиты акта')
-    mail_date = models.DateField(blank=True, null=True, verbose_name='Дата приема корреспонденции')
     user = models.ForeignKey(User, verbose_name=u'Автор отчета', on_delete=models.PROTECT, limit_choices_to={'is_staff': False})
     status = models.CharField(choices=REPORT_STATUS, max_length=100, verbose_name='Статус', default=STATUS_DRAFT)
     total_cost = models.FloatField(default=0, verbose_name='Общая сумма по отчету')
@@ -32,6 +29,7 @@ class Reports(ChangeloggableMixin, models.Model):
     verified_count = models.IntegerField(default=0, verbose_name='Количестов принятых ремонтов')
     have_fault = models.BooleanField(default=False, blank=True, verbose_name='Имеет ошибки')
     pay_date = models.DateField(blank=True, null=True, verbose_name='Дата передачи в оплату')
+    send_date = models.DateField(blank=True, null=True, verbose_name='Дата отправки на проверку')
 
     class Meta():
         verbose_name = 'Отчет'
@@ -47,6 +45,15 @@ class Reports(ChangeloggableMixin, models.Model):
 
     def get_absolute_url(self):
         return reverse('report_page', kwargs={"pk": self.pk, })
+    
+    def get_report_documents(self):
+        """ формирование строки из номера акта и счета (при наличии) """
+        
+        docs = self.reportdocumnent_set.filter(title__in=['act', 'invoice'])
+        text = ''
+        for doc in docs:
+            text = f'{text} {doc.get_title_display()} №{doc.number} от {str(doc.date)},'
+        return text[:-1] if text else '...'
 
 
 class ReportsRecords(ChangeloggableMixin, models.Model):
@@ -140,9 +147,8 @@ def report_pre_save(sender, instance, **kwargs):
             instance.status = 'verified'
             email = instance.service_center.user.email
             if email:
-                note = '\nПожалуйста, отправьте скан копии Акта и Счета на электронную почту "westservice@re-nova.com".'
-                note = note + '\nЭто позволит нам оплатить ваши услуги быстрее.'
-                note = note + '\nАкт и Счет выставляйте на полную сумму по отчету. Но если вы хотите выполнить взаимозачет - укажите это в письме.'
+                note = '\nПожалуйста, подгрузите скан копии Акта и Счета к вашему отчету на сайте.'
+                note = note + '\nЭто позволит нам оплатить ваши услуги быстрее.'    
                 SendReportSatus(email, instance, note)
     else:
         # если отчет пустой итоги равны нулю

@@ -326,7 +326,7 @@ class ReportsFilterForm(forms.Form):
     from servicecentres.models import ServiceCenters
     from django.contrib.auth.models import User
     from main.business_logic import REPORT_STATUS
-    service_center = forms.ModelChoiceField(queryset=ServiceCenters.objects.all(), empty_label="Все сервисы ...",
+    service_center = forms.ModelChoiceField(queryset=ServiceCenters.objects.all(), empty_label="все сервисы ...",
                                             required=False, widget=forms.Select(attrs={"class": "form-select"}))
     use_date = forms.BooleanField(required=False, widget=forms.CheckboxInput(
         attrs={"type": "checkbox", "class": "form-check-input"}))
@@ -334,11 +334,9 @@ class ReportsFilterForm(forms.Form):
                                                                         attrs={'class': 'form-select form-select-sm'}))
     year = forms.IntegerField(initial=now().year,
                               widget=forms.Select(choices=YEAR_CHOICES, attrs={'class': 'form-select form-select-sm'}))
-    use_status = forms.BooleanField( required=False, widget=forms.CheckboxInput(
-        attrs={"type": "checkbox", "class": "form-check-input"}))
-    status = forms.ChoiceField(choices=REPORT_STATUS,
+    status = forms.ChoiceField(choices=(('', 'все статусы ...'),) + REPORT_STATUS, 
                                required=False, widget=forms.Select(attrs={"class": "form-select"}))
-    staff_user = forms.ModelChoiceField(queryset=User.objects.filter(is_staff=True), empty_label="Все менеджеры ...",
+    staff_user = forms.ModelChoiceField(queryset=User.objects.filter(is_staff=True), empty_label="все менеджеры ...",
                                         required=False, widget=forms.Select(attrs={"class": "form-select"}))
 
 

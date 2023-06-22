@@ -271,10 +271,10 @@ LOGGING = {
             'handlers': ['console_DEBUG_INFO', 'console_WARNING', 'console_ERROR_CRITICAL', 'file_INFO',],        
         },
         'django.request': {
-            'handlers': ['file_ERROR_and_CRITICAL', 'mail_ERROR', ],     
+            'handlers': ['file_ERROR_and_CRITICAL', ],# 'mail_ERROR', ],     
         },
         'django.server': {
-            'handlers': ['file_ERROR_and_CRITICAL', 'mail_ERROR'],   
+            'handlers': ['file_ERROR_and_CRITICAL', ],#'mail_ERROR'],   
         },
         'django.template': {
             'handlers': ['file_ERROR_and_CRITICAL',],   

@@ -38,7 +38,7 @@ class ReportDocumnent(models.Model):
         verbose_name='Дата документа', null=False, blank=False)
     file = models.FileField(
         verbose_name='Файйл документа', upload_to=document_name, null=False, blank=False,
-        validators=[FileExtensionValidator( ['pdf', 'doc', 'docx', 'jpg', 'png', 'xlsx', '+xls'] )]
+        validators=[FileExtensionValidator( ['pdf', 'doc', 'docx', 'jpg', 'png', 'xlsx', 'xls', 'jpeg'] )]
         )
 
     class Meta():
@@ -46,11 +46,9 @@ class ReportDocumnent(models.Model):
         verbose_name_plural = 'Документы отчетов'
         ordering = ['report', 'title']
 
-
     def __str__(self):
         return f'{self.report} {self.get_title_display()} №{self.number} от {self.date}'
     
-
     def delete(self, *args, **kwargs):
         """ удаление файла вместе с удалением объекта """
         # До удаления записи получаем необходимую информацию
@@ -60,7 +58,7 @@ class ReportDocumnent(models.Model):
         super(ReportDocumnent, self).delete(*args, **kwargs)
         # Потом удаляем сам файл
         storage.delete(path)
-
+    
 
 def record_document_name(instance, filename):
     """ функция генерации пути сохранения медиафайла документа ремонта """
@@ -80,7 +78,7 @@ class RecordDocumnent(models.Model):
         verbose_name='Дата документа', null=False, blank=False)
     file = models.FileField(
         verbose_name='Файйл документа', upload_to=record_document_name, null=False, blank=False,
-        validators=[FileExtensionValidator( ['pdf', 'doc', 'docx', 'jpg', 'png', 'xlsx', '+xls'] )]
+        validators=[FileExtensionValidator( ['pdf', 'doc', 'docx', 'jpg', 'png', 'xlsx', 'xls', 'jpeg'] )]
         )
 
     class Meta():

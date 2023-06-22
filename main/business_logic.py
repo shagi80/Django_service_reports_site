@@ -9,11 +9,13 @@ STATUS_RECEIVED = 'received'
 STATUS_VERIFIED = 'verified'
 STATUS_ACCEPTED = 'accepted'
 STATUS_PAYMENT = 'payment'
+STATUS_SEND_AGAIN = 'send_again'
 
 REPORT_STATUS = (
     (STATUS_DRAFT, 'черновик'),
     (STATUS_SEND, 'отправлен на проверку'),
     (STATUS_REFINEMENT, 'на доработке'),
+    (STATUS_SEND_AGAIN, 'отправлен повторно'),
     (STATUS_RECEIVED, 'идет проверка'),
     (STATUS_VERIFIED, 'проверка закончена'),
     (STATUS_ACCEPTED, 'принят'),

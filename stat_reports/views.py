@@ -1,4 +1,7 @@
 """ представления модуля статистики """
+import csv
+
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import User
@@ -73,7 +76,7 @@ class SumForPayment(LoginRequiredMixin, StaffUserMixin, ListView):
 
 @user_passes_test(staff_validation)
 def export_sum_for_payment(request):
-    """ выгрузка отчета по сумма для оплаты в эксель """
+    """ выгрузка отчета по суммам для оплаты в эксель """
 
     # Создание книги, наименование файла, создание листа, наименование листа
     reports = Reports.objects.filter(status=STATUS_ACCEPTED).order_by('service_center')
@@ -102,7 +105,7 @@ def export_sum_for_payment(request):
     headerStyle = xlwt.easyxf('font: bold off, color black; borders: left thin, right thin, top thin, bottom thin;\
      pattern: pattern solid, fore_color white, fore_colour gray25; align: horiz center, vert top;')
     headerStyle.alignment.wrap = 1
-    columns = ['№', 'Отчет', 'За детали', 'За выезд', 'За работы', 'Итого', 'Акт и счет']
+    columns = ['№',  'Отчет', 'За детали', 'За выезд', 'За работы', 'Итого', 'Акт и счет']
     for col_num in range(len(columns)):
         workSheet.write(row_num, col_num, columns[col_num], headerStyle)
 
@@ -125,8 +128,36 @@ def export_sum_for_payment(request):
         workSheet.col(5).width = 3000
         workSheet.write(row_num, 5, report.total_cost, style)
         workSheet.col(6).width = 20000
-        workSheet.write(row_num, 6, '...', style)
+        workSheet.write(row_num, 6, report.get_report_documents(), style)
 
     workBook.save(response)
     return response
 
+
+@user_passes_test(staff_validation)
+def export_sum_for_payment_to_csv(request):
+    """ выгрузка даннх о суммах в оплату для экспорта в 1С """
+
+    response = HttpResponse(
+        content_type="text/csv",
+        headers={"Content-Disposition": 'attachment; filename="sum_for_pay.txt"'},
+    )
+    #response.write('asdf'.encode('ansi'))
+
+    Dialect = csv.excel
+    Dialect.quoting = csv.QUOTE_ALL
+    writer = csv.writer(response, dialect = Dialect)
+    reports = Reports.objects.filter(status=STATUS_ACCEPTED).order_by('service_center')
+    for report in reports:
+        act = report.reportdocumnent_set.filter(title='act').first()
+        row = [report.service_center.code, report.service_center.title,
+               report.total_part, report.total_move, report.total_work
+               ]
+        if act:
+            row.extend([act.number, act.date.strftime("%d.%m.%Y"),])
+        else:
+            row.extend(['', ''])
+        row.append(f'за {report.get_report_month()}')
+        writer.writerow(row)
+
+    return response

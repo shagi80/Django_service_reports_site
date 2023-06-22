@@ -194,3 +194,4 @@ def show_base_price_links():
     from ..business_logic import BASE_PRICE_TYPE
     base_price_type = BASE_PRICE_TYPE
     return {'base_price_type': base_price_type, }
+

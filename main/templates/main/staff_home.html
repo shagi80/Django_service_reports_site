@@ -33,8 +33,12 @@
                     
                             <!--Статус и кнопки-->
                             <div class="row g-1 justify-content-between py-2">
-                                {% if report.status == 'send' %}                                    
-                                    <h5 class="col-sm-6 text-warning">{{ report.get_status_display }}</h5>
+                                {% if report.status == 'send' or  report.status == 'send_again' %}                                    
+                                    <h5 class="col-auto text-warning">{{ report.get_status_display }}
+                                        {% if report.send_date %}
+                                            {{ report.send_date|date:" d.m.y" }}
+                                        {% endif %}
+                                    </h5>
                                     <button type="button" class="col-auto d-flex btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#statusModal_{{ report.pk }}">
                                         Начать проверку
                                     </button>

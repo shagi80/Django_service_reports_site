@@ -60,7 +60,6 @@ def AddRecordDocumet(request, record_pk):
     """ загрузка документа к отчету """
     if request.method == 'POST':
         form = RecordDocumentForm(request.POST, request.FILES)
-        print(form.errors)
         if form.is_valid():
             form.save()
             messages.success(request, 'Файл успешно загружен на сервер !')

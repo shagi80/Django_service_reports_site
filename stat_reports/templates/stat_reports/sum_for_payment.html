@@ -23,8 +23,9 @@
 
         <!--вывод записей-->
         {% if reports %}
-            <div class="row col mb-4 text-center">       
-                <div><a class="btn btn-outline-primary btn-sm" href="export-sum-for-payment" role="button">Выгрузитьв EXCEL</a></div>              
+            <div class="d-flex mb-4 justify-content-center">       
+                <div><a class="btn btn-outline-primary btn-sm" href="export-sum-for-payment" role="button">Выгрузить в EXCEL</a></div>              
+                <div><a class="btn btn-outline-primary btn-sm" href="export-sum-for-payment-to-csv" role="button">Выгрузить в TXT</a></div>              
             </div>
             <div class="row h6 d-none d-sm-flex">
                 <div class="col-sm-4">Отчет</div>
@@ -41,7 +42,7 @@
                     <div class="col-sm-1">{{ report.total_move }}</div>
                     <div class="col-sm-1">{{ report.total_work }}</div>
                     <div class="col-sm-1">{{ report.total_cost }}</div>
-                    <div class="col-sm-4">...</div>
+                    <div class="col-sm-4">{{ report.get_report_documents }}</div>
                 </div>
                 <div class="row d-sm-none mt-3">
                     <div class="col-sm-4 h5">{{ report }}</div>

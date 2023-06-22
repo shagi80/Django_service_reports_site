@@ -23,7 +23,7 @@ from mail.views import  mail_ordered_parts, mail_send_parts
 # отправка письма пользователю об изменении статуса отчета
 def SendReportSatus(email, report, note):
     """ отправка электронного письма польхователю """
-    email = report.service_center.user.email
+
     msg = f'Статус вашего отчета за {report.get_report_month()} изменен на "{report.get_status_display()}"\n\n'
     if note:
         msg = msg + 'Сообщение от менедежера:\n'
@@ -46,7 +46,7 @@ def SendReportToStaff(report):
         msg = f'Получен отчет от {report.service_center} за {report.get_report_month()}.\n\n'
         msg = msg + 'Это письмо сформированно автоматическа, отвечать на него не нужно.'
         send_mail(
-            'RENOVA. Получен новый отчет.',
+            f'RENOVA. Получен отчет {report} ({report.get_status_display()})',
             msg,
             'report_service@re-nova.com',
             ['shagi80@mail.ru'],
@@ -160,12 +160,12 @@ def ReportChangeStatus(request):
                     report_id = request.POST.get(status[0])
                     if status[0] == 'draft':
                         new_status = 'send'
-                    elif status[0] == 'send':
+                    elif status[0] == 'send' or status[0] == 'send_again':
                         new_status = 'received'
                     elif status[0] == 'received':
                         new_status = 'verified'
                     elif status[0] == 'refinement':
-                        new_status = 'send'
+                        new_status = 'send_again'
                     elif status[0] == 'verified':
                         new_status = 'accepted'
                     elif status[0] == 'accepted':
@@ -179,7 +179,7 @@ def ReportChangeStatus(request):
                 report.status = new_status
                 report.save()
                 email = report.service_center.user.email
-                if email:
+                if email:   
                     SendReportSatus(email, report, mail_note)
                 if new_status == 'received':
                     return redirect('report_page', report.pk)
@@ -207,12 +207,13 @@ class ReportsForStaff(LoginRequiredMixin, StaffUserMixin, ListView):
             reports = reports.filter(service_center=self.request.GET.get("service_center"))
         if self.request.GET.get("staff_user", '') != '':
             reports = reports.filter(service_center__staff_user=self.request.GET.get("staff_user"))
-        if self.request.GET.get("use_status", '') == 'on' and self.request.GET.get("status", '') != '':
+        if 'status' in self.request.GET and self.request.GET.get("status", '') != '':
             reports = reports.filter(status=self.request.GET.get("status"))
+            if self.request.GET.get("status") == 'send' or self.request.GET.get("status") == 'send_again':
+                reports = reports.order_by('-send_date')
         if self.request.GET.get("use_date", '') == 'on' and self.request.GET.get("month", '') != '' and \
                 self.request.GET.get("year", '') != '':
-            report_date = datetime.date(int(self.request.GET.get("year", '')), int(self.request.GET.get("month", '')),
-                                        1)
+            report_date = datetime.date(int(self.request.GET.get("year", '')), int(self.request.GET.get("month", '')), 1)
             reports = reports.filter(report_date=report_date)
         return reports
 
@@ -280,7 +281,8 @@ def ReportSend(request):
             if report_id:
                 report = get_object_or_404(Reports, pk=int(report_id))
                 if report.service_center.user == request.user or request.user.is_superuser:
-                    report.status = 'send'
+                    report.status = 'send_again' if report.status == 'refinement' else 'send'
+                    report.send_date = datetime.datetime.now().date()
                     report.save()
                     SendReportToStaff(report)
     return redirect('user_home')
